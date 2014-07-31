@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Pizza -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Pizza %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @pizza.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @pizza.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @pizza.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:picture) %></dt>
+      <dd><pre class="prettyprint"><%= @pizza.picture %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:price) %></dt>
+      <dd><pre class="prettyprint"><%= @pizza.price %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @pizza.description %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              pizzas_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_pizza_path(@pizza), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              pizza_path(@pizza),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @pizza.picture %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @pizza.price %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @pizza.user %>
-</p>
-
-<%= link_to 'Edit', edit_pizza_path(@pizza) %> |
-<%= link_to 'Back', pizzas_path %>
