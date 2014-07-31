@@ -29,6 +29,7 @@ class PizzasController < ApplicationController
   # POST /pizzas.json
   def create
     @pizza = Pizza.new(pizza_params)
+    @pizza.user = current_user
 
     respond_to do |format|
       if @pizza.save
